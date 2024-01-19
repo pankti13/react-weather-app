@@ -1,0 +1,11 @@
+body {
+  background-image: url("./images/strokes.jpg");
+  background-repeat: no-repeat;
+}
+
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+}
