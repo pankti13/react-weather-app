@@ -1,6 +1,7 @@
 import React from "react";
 import ShowDayTime from "./showDayTime";
 import WeatherIcon from "./WeatherIcon";
+import WeatherTemp from "./WeatherTemp";
 import { WiHumidity } from "weather-icons-react";
 import { WiStrongWind } from "weather-icons-react";
 
@@ -18,7 +19,7 @@ export default function WeatherInfo(props){
         </div>
         <div className="row RowThird">
           <div id="mainIcon" className="col-5 d-flex justify-content-center">
-              <WeatherIcon code={props.info.icon} />
+            <WeatherIcon code={props.info.icon} />
           </div>{" "}
           <div className="col-6">
             <div className="row embeddedRow1">
@@ -26,20 +27,7 @@ export default function WeatherInfo(props){
             </div>
             <div className="row embeddedRow2">
               <div className="col-6 DisplayTemp">
-                <div className="tempWrapper">
-                  <h1 id="current-temp">
-                    {Math.round(props.info.temperature)}
-                  </h1>
-                  <span className="units">
-                    <a href="/" id="celsius-link">
-                      °C
-                    </a>
-                    <span className="pipe">|</span>
-                    <a href="/" id="fahrenheit-link">
-                      F
-                    </a>
-                  </span>
-                </div>
+                <WeatherTemp celsius={props.info.temperature} />
                 <span id="maxMinTemp">
                   {Math.round(props.info.minTemp)}°C/
                   {Math.round(props.info.maxTemp)}°C
