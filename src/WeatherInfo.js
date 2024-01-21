@@ -1,5 +1,6 @@
 import React from "react";
 import ShowDayTime from "./showDayTime";
+import WeatherIcon from "./WeatherIcon";
 import { WiHumidity } from "weather-icons-react";
 import { WiStrongWind } from "weather-icons-react";
 
@@ -16,12 +17,8 @@ export default function WeatherInfo(props){
           </div>{" "}
         </div>
         <div className="row RowThird">
-          <div className="col-5 d-flex justify-content-center">
-            <img
-              src={props.info.icon}
-              alt={props.info.description}
-              id="mainIcon"
-            />
+          <div id="mainIcon" className="col-5 d-flex justify-content-center">
+              <WeatherIcon code={props.info.icon} />
           </div>{" "}
           <div className="col-6">
             <div className="row embeddedRow1">

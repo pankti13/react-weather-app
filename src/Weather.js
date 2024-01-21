@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import WeatherInfo from "./WeatherInfo";
-import "./Weather.css";
+import "./styles/Weather.css";
 import { RotatingLines } from "react-loader-spinner";
 import axios from "axios";
 
@@ -23,7 +23,7 @@ export default function Weather(props){
       description: response.data.weather[0].description,
       humidity: response.data.main.humidity,
       windSpeed: response.data.wind.speed,
-      icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      icon: response.data.weather[0].icon,
     });
   }
   
