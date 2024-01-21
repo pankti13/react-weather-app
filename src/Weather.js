@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
-import ShowDayTime from './showDayTime';
+import WeatherInfo from "./WeatherInfo";
 import "./Weather.css";
-import { WiHumidity } from "weather-icons-react";
-import { WiStrongWind } from "weather-icons-react";
 import { RotatingLines } from "react-loader-spinner";
 import axios from "axios";
 
@@ -16,6 +14,7 @@ export default function Weather(props){
     // setReady(true);
     setWeatherData({
       ready: true,
+      city: response.data.name,
       country: response.data.sys.country,
       date: new Date(response.data.dt * 1000),
       temperature: response.data.main.temp,
@@ -43,75 +42,12 @@ export default function Weather(props){
           />
           <input type="submit" defaultValue="Search" className="btn" />
         </form>
-        <div className="row RowSecond">
-          <div className="col-6 location">
-            {props.cityName} , {weatherData.country}
-          </div>
-          <div className="col-6 location" id="dayDateTime">
-            <span>Last Updated: </span>
-              <ShowDayTime
-                date={weatherData.date}
-              /> 
-          </div>{" "}
-        </div>
-        <div className="row RowThird">
-          <div className="col-5 d-flex justify-content-center">
-            <img
-              src={weatherData.icon}
-              alt={weatherData.description}
-              id="mainIcon"
-            />
-          </div>{" "}
-          <div className="col-6">
-            <div className="row embeddedRow1">
-              <div className="current">Currently</div>
-            </div>
-            <div className="row embeddedRow2">
-              <div className="col-6 DisplayTemp">
-                <div className="tempWrapper">
-                  <h1 id="current-temp">
-                    {Math.round(weatherData.temperature)}
-                  </h1>
-                  <span className="units">
-                    <a href="/" id="celsius-link">
-                      °C
-                    </a>
-                    <span className="pipe">|</span>
-                    <a href="/" id="fahrenheit-link">
-                      F
-                    </a>
-                  </span>
-                </div>
-                <span id="maxMinTemp">
-                  {Math.round(weatherData.minTemp)}°C/
-                  {Math.round(weatherData.maxTemp)}°C
-                </span>
-              </div>{" "}
-              <div className="col-6 DisplayExtraInfo">
-                <h4 id="description">{weatherData.description}</h4>
-                <h6>
-                  <WiHumidity size={24} color="#000" />
-                  <strong>Humidity: </strong>
-                  <span id="humid-data">
-                    {Math.round(weatherData.humidity)}%
-                  </span>
-                </h6>
-                <h6>
-                  <WiStrongWind size={24} color="#000" />
-                  <strong>Wind Speed: </strong>
-                  <span id="wind-data">
-                    {Math.round(weatherData.windSpeed)} km/h
-                  </span>
-                </h6>
-              </div>
-            </div>
-          </div>
-        </div>
+        <WeatherInfo info={weatherData} />
       </div>
     );
   }
   else{
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.cityName}&appid=${apiKey}&units=metric`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(displayWeather);
 
     return (
