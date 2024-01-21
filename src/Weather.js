@@ -5,11 +5,11 @@ import { RotatingLines } from "react-loader-spinner";
 import axios from "axios";
 
 export default function Weather(props){
-  const apiKey = "57b2c40fdae71a6ba41d72685e3226e2";
-
+  
   // const [ready, setReady]=useState(false);
+  const [cityName, setCityName]= useState(props.defaultCity);
   const [weatherData, setWeatherData]= useState({ready:false});
-
+  
   function displayWeather(response){
     // setReady(true);
     setWeatherData({
@@ -26,15 +26,31 @@ export default function Weather(props){
       icon: `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
     });
   }
+  
+  function search(){
+    const apiKey = "57b2c40fdae71a6ba41d72685e3226e2";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(displayWeather);
+  }
+
+  function handleSubmit(event){
+    event.preventDefault();
+    search();
+  }
+
+  function handleCityChange(event){
+    setCityName(event.target.value);
+  }
 
   if(weatherData.ready){
     return (
       <div className="innerContainer">
         <h1 className="heading">React Weather Made Easy</h1>
-        <form id="search-bar" className="rowFirst">
+        <form onSubmit={handleSubmit} id="search-bar" className="rowFirst">
           <input
             type="text"
             id="cityName"
+            onChange={handleCityChange}
             className="search"
             placeholder="Enter a city name"
             autoComplete="off"
@@ -42,14 +58,12 @@ export default function Weather(props){
           />
           <input type="submit" defaultValue="Search" className="btn" />
         </form>
-        <WeatherInfo info={weatherData} />
+        <WeatherInfo info={weatherData}/>
       </div>
     );
   }
   else{
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(displayWeather);
-
+    search();
     return (
       <RotatingLines
         visible={true}
