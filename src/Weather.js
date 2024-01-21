@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import ShowDayTime from './showDayTime';
 import "./Weather.css";
 import { WiHumidity } from "weather-icons-react";
 import { WiStrongWind } from "weather-icons-react";
@@ -16,7 +17,7 @@ export default function Weather(props){
     setWeatherData({
       ready: true,
       country: response.data.sys.country,
-      date: "Wednesday 07:00",
+      date: new Date(response.data.dt * 1000),
       temperature: response.data.main.temp,
       minTemp: response.data.main.temp_min,
       maxTemp: response.data.main.temp_max,
@@ -48,7 +49,9 @@ export default function Weather(props){
           </div>
           <div className="col-6 location" id="dayDateTime">
             <span>Last Updated: </span>
-            <span className="date">{weatherData.date}</span>{" "}
+              <ShowDayTime
+                date={weatherData.date}
+              /> 
           </div>{" "}
         </div>
         <div className="row RowThird">
@@ -71,7 +74,7 @@ export default function Weather(props){
                   </h1>
                   <span className="units">
                     <a href="/" id="celsius-link">
-                      C
+                      °C
                     </a>
                     <span className="pipe">|</span>
                     <a href="/" id="fahrenheit-link">
