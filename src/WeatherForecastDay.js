@@ -18,7 +18,7 @@ export default function WeatherForecastDay(props){
     }
 
     return (
-      <div className="col-2 dayElement justify-content-center">
+      <div className="WeatherForecastDay">
         <h5 className="forecast-day">{getDay()}</h5>
         <WeatherIcon code={props.data.weather[0].icon} size={35} />
         <h6 id="forecastMaxMin">

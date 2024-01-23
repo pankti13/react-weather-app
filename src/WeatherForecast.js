@@ -29,8 +29,13 @@ export default function WeatherForecast(props){
           {
             forecastData.map((dailyForecast, index)=>{
               if(index>=1 && index<=5){
-                return <WeatherForecastDay data={dailyForecast} />;
+                return (
+                  <div className="col-2 dayElement justify-content-center" key={index}>
+                    <WeatherForecastDay data={dailyForecast} />
+                  </div>
+                );
               }
+              else return null;
             })
           }
         </div>
