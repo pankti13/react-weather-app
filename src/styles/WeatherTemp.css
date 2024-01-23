@@ -1,0 +1,52 @@
+#current-temp {
+  font-size: 50px;
+}
+
+#maxMinTemp {
+  font-size: 20px;
+}
+
+.units {
+  position: relative;
+  font-weight: bold;
+  top: 8px;
+  font-size: 20px;
+}
+
+.embeddedRow2 .DisplayTemp {
+  padding: 5px 15px;
+  border-right: 3px solid black;
+  font-family: "Roboto", sans-serif;
+  text-align: center;
+}
+
+.tempWrapper {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#celsius-link {
+  text-decoration: none;
+  padding: 1px 2px;
+  color: darkmagenta;
+}
+
+#celsius-link:hover{
+  text-decoration: underline;
+} 
+
+#fahrenheit-link {
+  text-decoration: none;
+  padding: 1px 2px;
+  color: darkmagenta;
+}
+
+#fahrenheit-link:hover{
+  text-decoration: underline;
+} 
+
+.pipe {
+  font-weight: bold;
+}

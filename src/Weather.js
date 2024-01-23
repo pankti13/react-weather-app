@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import WeatherInfo from "./WeatherInfo";
+import WeatherForecast from "./WeatherForecast";
 import "./styles/Weather.css";
 import { RotatingLines } from "react-loader-spinner";
 import axios from "axios";
@@ -24,6 +25,7 @@ export default function Weather(props){
       humidity: response.data.main.humidity,
       windSpeed: response.data.wind.speed,
       icon: response.data.weather[0].icon,
+      coords: response.data.coord,
     });
   }
   
@@ -58,7 +60,8 @@ export default function Weather(props){
           />
           <input type="submit" defaultValue="Search" className="btn" />
         </form>
-        <WeatherInfo info={weatherData}/>
+        <WeatherInfo info={weatherData} />
+        <WeatherForecast coordinates={weatherData.coords}/>
       </div>
     );
   }

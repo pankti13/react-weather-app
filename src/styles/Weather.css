@@ -4,7 +4,7 @@
 .innerContainer {
   max-width: 850px;
   margin: 7px auto;
-  padding: 30px;
+  padding: 15px;
   border: 4px solid black;
   border-radius: 10px;
 }
@@ -81,11 +81,11 @@
 #mainIcon {
   height: 208px;
   width: 180px;
-  padding: 50px;
+  padding: 40px;
   margin: 0 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
   border-top-right-radius: 30px;
-  border-bottom-left-radius: 30px;
+  border-bottom-left-radius: 30px; 
   transition: transform 0.3s ease;
 }
 
@@ -107,59 +107,6 @@
   text-align: center;
 }
 
-#current-temp {
-  font-size: 60px;
-}
-
-#maxMinTemp {
-  font-size: 20px;
-}
-
-.units {
-  position: relative;
-  font-weight: bold;
-  top: 8px;
-  font-size: 20px;
-}
-
-.embeddedRow2 .DisplayTemp {
-  padding: 5px 15px;
-  border-right: 3px solid black;
-  font-family: "Roboto", sans-serif;
-  text-align: center;
-}
-
-.tempWrapper {
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
-  text-align: center;
-}
-
-#celsius-link {
-  text-decoration: none;
-  padding: 1px 2px;
-  color: darkmagenta;
-}
-
-#celsius-link:hover{
-  text-decoration: underline;
-} 
-
-#fahrenheit-link {
-  text-decoration: none;
-  padding: 1px 2px;
-  color: darkmagenta;
-}
-
-#fahrenheit-link:hover{
-  text-decoration: underline;
-} 
-
-.pipe {
-  font-weight: bold;
-}
-
 .embeddedRow2 .DisplayExtraInfo {
   padding: 5px 15px;
   font-family: "Roboto", sans-serif;
@@ -172,4 +119,3 @@
   font-weight: bold;
   font-size: 25px;
 }
-
